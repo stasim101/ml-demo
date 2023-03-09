@@ -1,16 +1,19 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import pandas as pd
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def read_products(filename):
+    products = pd.read_csv(filename)
+    return products
 
 
-# Press the green button in the gutter to run the script.
+def main(filename):
+    products = read_products(filename)
+    data = products.groupby(['PRODUCT_NAME']).size()
+    total_value = products['PRODUCT_PRICE'].sum()
+
+    print(data)
+    print('Total value:', total_value)
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main('C:\\Users\\IMRAN\\Downloads\\archive\\chunks\\chunk-31.csv')
