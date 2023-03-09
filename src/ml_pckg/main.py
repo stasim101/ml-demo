@@ -1,5 +1,5 @@
 import pandas as pd
-
+import matplotlib.pyplot as plt
 
 def read_products(filename):
     products = pd.read_csv(filename)
@@ -8,12 +8,18 @@ def read_products(filename):
 
 def main(filename):
     products = read_products(filename)
-    data = products.groupby(['SENTIMENT']).size()
-    total_value = products['PRODUCT_PRICE'].sum()
+    data = products.groupby(['Category']).size()
 
-    print(data)
-    print('Total value:', total_value)
+#    print(data.to_dict().keys())
+    x_axis = data.to_dict().keys()
+    y_axis = data.to_dict().values()
+
+    plt.bar(x_axis, y_axis)
+    plt.title('Walmart Sales Analysis')
+    plt.xlabel('Categories')
+    plt.ylabel('Sales Count')
+    plt.show()
 
 
 if __name__ == '__main__':
-    main('C:\\Users\\IMRAN\\Downloads\\archive\\chunks\\chunk-31.csv')
+    main('D:\\Python code\\Data\\Walmart Sales Analysis\\Walmart.csv')
