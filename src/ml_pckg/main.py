@@ -8,7 +8,7 @@ def read_products(filename):
 
 def main(filename):
     products = read_products(filename)
-    data = products.groupby(['PRODUCT_NAME']).size()
+    data = products.groupby(['SENTIMENT']).size()
     total_value = products['PRODUCT_PRICE'].sum()
 
     print(data)
