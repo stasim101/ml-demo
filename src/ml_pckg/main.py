@@ -1,5 +1,5 @@
 import pandas as pd
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plot
 
 
 def read_products(filename):
@@ -15,11 +15,11 @@ def main(filename):
     x = data.to_dict().keys()
     y = data.to_dict().values()
 
-    plt.scatter(x, y)
-    plt.title('Walmart Sales Analysis')
-    plt.xlabel('Categories')
-    plt.ylabel('Sales Count')
-    plt.show()
+    plot.scatter(x, y)
+    plot.title('Walmart Sales Analysis')
+    plot.xlabel('Categories')
+    plot.ylabel('Sales Count')
+    plot.show()
 
 
 if __name__ == '__main__':
