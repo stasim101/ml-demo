@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy
 import matplotlib.pyplot as plot
 
 
@@ -9,11 +10,13 @@ def read_products(filename):
 
 def main(filename):
     products = read_products(filename)
-    data = products.groupby(['Category']).size()
+    data = products.groupby(['Category']).size().to_dict()
 
-#    print(data.to_dict().keys())
-    x = data.to_dict().keys()
-    y = data.to_dict().values()
+#    x = data.keys()
+#    y = data.values()
+
+    x = numpy.random.normal(5.0, 1.0, 1000)
+    y = numpy.random.normal(10.0, 2.0, 1000)
 
     plot.scatter(x, y)
     plot.title('Walmart Sales Analysis')
