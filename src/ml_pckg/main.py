@@ -1,34 +1,23 @@
-import pandas as pd
-import numpy
-import matplotlib.pyplot as plot
+import matplotlib.pyplot as plt
+from scipy import stats
+
+x = [5, 7, 8, 7, 2, 17, 2, 9, 4, 11, 12, 9, 6]
+y = [99, 86, 87, 88, 111, 86, 103, 87, 94, 78, 77, 85, 86]
+
+slope, intercept, r, p, std_err = stats.linregress(x, y)
 
 
-def read_products(filename):
-    products = pd.read_csv(filename)
-    return products
+def myfunc(x):
+    return slope * x + intercept
 
 
-def main(filename):
-    products = read_products(filename)
-    data = products.groupby(['Category']).size().to_dict()
-
-    x = data.keys()
-    y = list(data.values())
-
-    y_mean = numpy.mean(y)
-    y_std = numpy.std(y)
-    y_len = len(y)
-
-    y_a = numpy.random.normal(y_mean, y_std, y_len)
-
-#    print(y_len)
-#    plot.scatter(x, y_a)
-    plot.hist(y_a, 2*y_len)
-    plot.title('Walmart Sales Analysis')
-    plot.xlabel('Categories')
-    plot.ylabel('Sales Count')
-    plot.show()
+def main():
+    model = list(map(myfunc, x))
+    plt.scatter(x, y)
+    plt.plot(x, model)
+    plt.show()
 
 
 if __name__ == '__main__':
-    main('D:\\Python code\\Data\\Walmart Sales Analysis\\Walmart.csv')
+    main()
+    
