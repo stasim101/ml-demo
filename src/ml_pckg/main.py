@@ -8,7 +8,7 @@ y = [99, 86, 87, 88, 111, 86, 103, 87, 94, 78, 77, 85, 86]
 
 def main():
     model = numpy.poly1d(numpy.polyfit(x, y, 3))
-    line = numpy.linspace(1, 22, 100)
+    line = numpy.linspace(1, 33, 100)
     plt.scatter(x, y)
     plt.plot(line, model(line))
     plt.show()
