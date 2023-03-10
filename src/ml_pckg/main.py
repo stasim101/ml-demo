@@ -12,13 +12,16 @@ def main(filename):
     products = read_products(filename)
     data = products.groupby(['Category']).size().to_dict()
 
-#    x = data.keys()
-#    y = data.values()
+    x = data.keys()
+    y = list(data.values())
 
-    x = numpy.random.normal(5.0, 1.0, 1000)
-    y = numpy.random.normal(10.0, 2.0, 1000)
+    y_mean = numpy.mean(y)
+    y_std = numpy.std(y)
+    y_len = len(y)
 
-    plot.scatter(x, y)
+    y_a = numpy.random.normal(y_mean, y_std , y_len)
+
+    plot.scatter(x, y_a)
     plot.title('Walmart Sales Analysis')
     plot.xlabel('Categories')
     plot.ylabel('Sales Count')
