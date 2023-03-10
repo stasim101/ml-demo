@@ -19,7 +19,7 @@ def main(filename):
     y_std = numpy.std(y)
     y_len = len(y)
 
-    y_a = numpy.random.normal(y_mean, y_std , y_len)
+    y_a = numpy.random.normal(y_mean, y_std, y_len)
 
     plot.scatter(x, y_a)
     plot.title('Walmart Sales Analysis')
