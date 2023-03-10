@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 def read_products(filename):
     products = pd.read_csv(filename)
     return products
@@ -11,10 +12,10 @@ def main(filename):
     data = products.groupby(['Category']).size()
 
 #    print(data.to_dict().keys())
-    x_axis = data.to_dict().keys()
-    y_axis = data.to_dict().values()
+    x = data.to_dict().keys()
+    y = data.to_dict().values()
 
-    plt.bar(x_axis, y_axis)
+    plt.scatter(x, y)
     plt.title('Walmart Sales Analysis')
     plt.xlabel('Categories')
     plt.ylabel('Sales Count')
